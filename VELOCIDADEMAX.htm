@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>VELOCIDADEMAX (Google Maps Export from Global Mapper)</title>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+
+    var G = google.maps;
+    var map;
+    
+    var customMapType = new G.ImageMapType
+      (
+        {
+        getTileUrl: function(coord, zoom)
+          {
+          var normalizedCoord = getNormalizedCoord(coord, zoom);
+          if (!normalizedCoord) { return null; }
+          
+          if ( zoom == 10 && normalizedCoord.x >= 380 && normalizedCoord.x <= 381 && normalizedCoord.y >= 580 && normalizedCoord.y <= 580 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20velocidademaxima//MAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 11 && normalizedCoord.x >= 761 && normalizedCoord.x <= 763 && normalizedCoord.y >= 1160 && normalizedCoord.y <= 1161 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20velocidademaxima//MAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 12 && normalizedCoord.x >= 1523 && normalizedCoord.x <= 1526 && normalizedCoord.y >= 2320 && normalizedCoord.y <= 2322 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20velocidademaxima//MAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 13 && normalizedCoord.x >= 3047 && normalizedCoord.x <= 3052 && normalizedCoord.y >= 4640 && normalizedCoord.y <= 4645 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20velocidademaxima//MAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 14 && normalizedCoord.x >= 6094 && normalizedCoord.x <= 6105 && normalizedCoord.y >= 9281 && normalizedCoord.y <= 9290 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20velocidademaxima//MAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 15 && normalizedCoord.x >= 12188 && normalizedCoord.x <= 12210 && normalizedCoord.y >= 18563 && normalizedCoord.y <= 18580 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20velocidademaxima//MAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 16 && normalizedCoord.x >= 24376 && normalizedCoord.x <= 24420 && normalizedCoord.y >= 37126 && normalizedCoord.y <= 37161 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20velocidademaxima//MAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 17 && normalizedCoord.x >= 48753 && normalizedCoord.x <= 48840 && normalizedCoord.y >= 74253 && normalizedCoord.y <= 74323 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20velocidademaxima//MAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          else if ( zoom == 18 && normalizedCoord.x >= 97507 && normalizedCoord.x <= 97681 && normalizedCoord.y >= 148506 && normalizedCoord.y <= 148646 )
+          {
+            return "file:///C://Users//Light_7//Desktop//mapas//mapa%20velocidademaxima//MAPS//Z" + zoom + "/" + normalizedCoord.y + "/" + normalizedCoord.x + ".png"; // replace that with a "real" URL
+          }
+          return null;
+        },
+
+        alt: "VELOCIDADEMAX",
+        tileSize: new G.Size(256, 256),
+        isPng: true,
+        maxZoom: 18,
+        minZoom: 10,
+        opacity: 0.85,
+        name: "VELOCIDADEMAX"
+      }
+    )
+
+    function getNormalizedCoord(coord, zoom)
+    {
+      var y = coord.y;
+      var x = coord.x;
+      
+      var tileRange = 1 << zoom;
+      
+      if (y < 0 || y >= tileRange) { return null; }
+      if (x < 0 || x >= tileRange)
+      {
+        x = (x % tileRange + tileRange) % tileRange;
+      }
+      
+      return { x: x, y: y };
+    }
+
+    function initialize()
+    {
+      var myLatlng = new G.LatLng(-23.402667,-46.054687);
+      var myOptions = {
+        center: myLatlng,
+        zoom: 10,
+        mapTypeId: G.MapTypeId.ROADMAP,
+        mapTypeControl: true,
+        overviewMapControl: true,
+        scaleControl: true,
+        streetViewControl: true,
+        panControl: true,
+        zoomControl: true,
+        zoomControlOptions: { style: google.maps.ZoomControlStyle.DEFAULT }
+      };
+      
+      map = new G.Map(document.getElementById("map_canvas"), myOptions);
+      map.overlayMapTypes.insertAt(0, customMapType);
+    }
+    </script>
+</head>
+<body onload="initialize()">
+<div id="map_canvas" style="width: 100%; height: 800px; margin: 0px 0px 0px 0px; float: middle;"></div>
+</body> </html>
